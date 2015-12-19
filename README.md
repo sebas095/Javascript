@@ -1,5 +1,5 @@
 # Javascript
-Learning a little about JS and JS Node
+Learning a little about JS and NodeJS.
 
 References:
 * http://nodeschool.io/#workshoppers
