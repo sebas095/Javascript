@@ -1,6 +1,6 @@
 # Javascript
 Learning a little about JS and JS Node
 
-Reference:
+References:
 * http://nodeschool.io/#workshoppers
 * https://codigofacilito.com/courses/javascript
