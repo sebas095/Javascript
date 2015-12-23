@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Funciones</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function Tutor(nombre, apellido) {
+        this.nombre = nombre;
+        this.saludar = function() {
+          console.log("Hola a todos soy " + this.nombre);
+        }
+        if (typeof(apellido) !== "undefined")
+          this.nombre_completo = nombre + " " + apellido;
+
+      }
+
+      var sebas = new Tutor("Sebastian", "Duque");
+      sebas.saludar();
+      console.log(sebas.nombre_completo);
+
+      var jose = new Tutor("Jose");
+      jose.saludar();
+      console.log(jose.nombre_completo);
+
+    </script>
+  </body>
+</html>
