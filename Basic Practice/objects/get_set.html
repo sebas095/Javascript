@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Getters and Setters</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var curso = {
+      titulo: "Curso javaScript",
+      videos: 19,
+      tutor_value: "Uriel",
+
+      // Ahora
+      get tutor() {
+        return this.tutor_value.toUpperCase();
+      },
+      set tutor(tutor) {
+        if (tutor === "" || typeof(tutor) === "undefined") return;
+        this.tutor_value = tutor;
+      }
+
+      /* Antes
+      getTutor: function() {
+        return this.tutor.toUpperCase();
+      },
+      setTutor: function(tutor) {
+        if (tutor === "" || typeof(tutor) === "undefined") return;
+        this.tutor = tutor;
+      }
+      */
+    };
+
+    curso.tutor = "";
+    console.log(curso.tutor);
+
+    </script>
+  </body>
+</html>
