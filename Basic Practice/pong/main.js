@@ -10,7 +10,7 @@
 
   self.Board.prototype = {
     get elements(){
-      var elements = this.bars;
+      var elements = this.bars.map(function(bar) { return bar; });
       elements.push(this.ball);
       return elements;
     }
@@ -22,11 +22,38 @@
     this.x = x;
     this.y = y;
     this.radius = radius;
-    this.speed_x = 0;
-    this.speed_y = 3;
+    this.speed_x = 3;
+    this.speed_y = 0;
     this.board = board;
     board.ball = this;
+    this.direction = 1;
+    this.bounce_angle = 0;
+    this.max_bounce_angle = Math.PI / 12;
+    this.speed = 3;
     this.kind = "circle";
+  }
+
+  self.Ball.prototype = {
+    move: function() {
+      this.x += this.speed_x * this.direction;
+      this.y += this.speed_y;
+    },
+    get width() {
+      return this.radius * 2;
+    },
+    get height() {
+      return this.radius * 2;
+    },
+    collision: function(bar) {
+      // Reacciona a la colision con una barra que recibe como parametro
+      var relative_intersect_y = (bar.y + (bar.height / 2)) - this.y;
+      var normalized_intersect_y = relative_intersect_y / (bar.height / 2);
+
+      this.bounce_angle = normalized_intersect_y * this.max_bounce_angle;
+      this.speed_x = this.speed * Math.cos(this.bounce_angle);
+      this.speed_y = this.speed * -Math.sin(this.bounce_angle);
+      this.direction = (this.x > (this.board.width / 2))? -1 : 1;
+    }
   }
 })();
 
@@ -74,10 +101,47 @@
         draw(this.ctx, el);
       }
     },
+    check_collisions: function() {
+      for (var i = 0; i < this.board.bars.length; i++) {
+        var bar = this.board.bars[i];
+        if (hit(bar, this.board.ball)) {
+          this.board.ball.collision(bar);
+        }
+      }
+    },
     play: function() {
-      this.clear();
-      this.draw();
+      if (this.board.playing) {
+        this.clear();
+        this.draw();
+        this.check_collisions();
+        this.board.ball.move();
+      }
     }
+  }
+
+  function hit(a, b) {
+    // Revisa si a colisiona con b
+    var hit = false;
+    
+    // Colisiones horizontales
+    if (b.x + b.width >= a.x && b.x < a.x + a.width) {
+      // Colisiones verticales
+      if (b.y + b.height >= a.y && b.y < a.y + a.height)
+        hit = true;
+    }
+    
+    // Colision de a con b
+    if (b.x <= a.x && b.x + b.width >= a.x + a.width) {
+      if (b.y <= a.y && b.y + b.height >= a.y + a.height)
+        hit = true;
+    }
+
+    // Colision de b con a
+    if (a.x <= b.x && a.x + a.width >= b.x + b.width) {
+      if (a.y <= b.y && a.y + a.height >= b.y + b.height)
+        hit = true;
+    }
+    return hit;
   }
 
   function draw(ctx, element) {
@@ -105,14 +169,30 @@ var ball = new Ball(350, 100, 10, board);
 // ---------------------------------------------
 
 // self: atributo de window
+board_view.draw();
 window.requestAnimationFrame(controller);
+
 document.addEventListener("keydown", function(ev) {
-  ev.preventDefault();
-  if (ev.keyCode == 38)      bar_1.up();
-  else if (ev.keyCode == 87) bar_2.up();
-  else if (ev.keyCode == 40) bar_1.down();
-  else if (ev.keyCode == 83) bar_2.down();
-  console.log("" + bar_2);
+  if (ev.keyCode == 38) {
+    ev.preventDefault();
+    bar_2.up();
+  }      
+  else if (ev.keyCode == 87) {
+    // W
+    ev.preventDefault();
+    bar_1.up();
+  } 
+  else if (ev.keyCode == 40){ bar_2.down();}
+  else if (ev.keyCode == 83) {
+    // S
+    ev.preventDefault();
+    bar_1.down();
+  }
+  else if (ev.keyCode == 32) {
+    // Pause
+    ev.preventDefault();
+    board.playing = !board.playing;
+  }
 });
 
 function controller() {
