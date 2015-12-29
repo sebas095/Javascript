@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Curso JQuery: Funciones</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /*
+      Forma 1
+      function factorial(num) {
+        var fact = 1;
+        for (num; num > 0; num--)
+          fact *= num;
+        return fact;
+      }
+
+      var resultado = factorial(3);
+      alert(resultado);
+      alert(factorial(3));
+      */
+
+      // Forma 2
+      var factorial = function(num) {
+        var fact = 1;
+        for (num; num > 0; num--)
+          fact *= num;
+        alert(fact);
+      }
+      factorial(5);
+    </script>
+  </body>
+</html>
