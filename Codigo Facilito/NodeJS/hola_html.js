@@ -25,7 +25,17 @@ http.createServer(function(req, res) {
 http.createServer(function(req, res) {
   fs.readFile("./index.html", function(err, html) {
     if (err) throw err;
-    res.write(html);
+    // 200 ok
+    // >= 400 no se encontro
+    // >= 300 se movio
+    // >= 500 error
+    res.writeHead(200, {
+      "Content-Type": "application/json"
+    });
+    res.write(JSON.stringify({
+      nombre: "Sebastian",
+      username: "sebas"
+    }));
     res.end();
   });
 }).listen(8080);

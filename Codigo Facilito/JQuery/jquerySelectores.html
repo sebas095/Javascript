@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Selectores</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function() {
+        // Acceso a css desde JQuery
+        //$("div.miDiv").css({background-color': '#000'});
+        //$("div.miDiv article p").text("Hola selectores avanzados");
+        $("#parrafoUno, #parrafoDos, span").text("Hey somos iguales!");
+      });
+    </script>
+  </head>
+  <body>
+    <div class="miDiv">
+      <article>
+        <p id="parrafoUno">Hola JQuery</p>
+      </article>
+    </div>
+    <div >
+      <article class='miDiv'>
+        <p id="parrafoDos">Y el curso de Codigo Facilito</p>
+      </article>
+    </div>
+    <span></span>
+  </body>
+</html>

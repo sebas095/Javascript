@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Objetos en Javascript</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var gato = new Gato("Mono");
+      var gato2 = new Gato("Minina");
+
+      function Gato(nombre) {
+        this.nombre = nombre;
+        this.maulla = function() {
+          alert(this.nombre + " hizo Miauuu!");
+        };
+      }
+
+      gato.maulla();
+      gato2.maulla();
+    </script>
+  </body>
+</html>
