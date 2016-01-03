@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Crear, Copiar y Remover elementos con JQuery</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function() {
+        $('button').on('click', function() {
+          // Origen - Destino
+          // $('ol li:first').appendTo('ol:first');
+          // $('ol li:last').prependTo('ol:first');
+
+          // Destino - Origen
+          // $('ol:first').append($('ol li:first'));
+          // $('ol:first').prepend($('ol li:last'));
+
+          // Origen - Destino
+          // $('ol li:first').insertAfter('#e1');
+
+          // Destino - Origen
+          // $('#e1').after($('ol li:first'));
+
+          // Origen - Destino
+          // $('ol li:first').insertBefore('#e1');
+
+          // Destino - Origen
+          //$('#e1').before($("ol li:first"));
+
+          // var clon = $("ol li:first").clone();
+          // Convierte el texto que este en $() en codigo HTML
+          // var nuevo_e = $('<p>Hola Mundo</p>');
+          // $('#e1').append(nuevo_e);
+          $('ol li:last').remove();
+        });
+      });
+    </script>
+    <style>
+      body, html {
+        background: #000;
+        color: #FFF;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        display: block;
+        margin: 0 auto 50px auto;
+        width: 365px;
+      }
+      ol {
+        display: block;
+        width: 500px;
+        margin: 0 auto;
+      }
+      ol li {
+        background: #088A29;
+        margin: 5px auto;
+        height: 30px;
+        width: 100%;
+      }
+      button {
+        display: block;
+        margin: 0 auto;
+        width: 80px;
+      }
+      div {
+        background: #FE2E64;
+        height: 50px;
+        display: block;
+        width: 400px;
+        margin: 2px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <center><img src="img/codigoFacilito.jpg" alt="CF" height="250" width="300"/></center>
+    </header>
+    <ol>
+      <li>Elemento 1</li>
+      <li>Elemento 2</li>
+      <li>Elemento 3</li>
+      <li>Elemento 4</li>
+    </ol>
+    <button id="test">Ejecutar</button>
+    <div id="e1">
+      <p>Div 1</p>
+    </div>
+    <div id="e2">
+      <p>Div 2</p>
+    </div>
+  </body>
+</html>

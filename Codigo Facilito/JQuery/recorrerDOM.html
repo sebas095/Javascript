@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Recorrer el DOM</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function() {
+        // $('#primero').next().text()
+        // $('#test').parent().text()
+        // $('#padre').children().attr('id')
+        // Todos los siguientes de #primero
+        // $('#primero').siblings()
+        $('ul li').each(function(index, element) {
+          console.log("Este elemento número " + index + " contiene este texto: " + $(element).text());
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <article id='padre'>
+        Hey!! :D
+        <div id='test'>Soy el hijo</div>
+      </article>
+    </div>
+    <ul>
+      <li id="primero">Soy el primero</li>
+      <li>Soy el que sigue</li>
+      <li>Soy el tercero</li>
+    </ul>
+  </body>
+</html>

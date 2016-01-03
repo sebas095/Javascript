@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dimensiones</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function() {
+        // console.log($("header img").width(100));
+        // $('#e1').height(50);
+        var pos = $('#e2 p').position();
+        var pos2 = $('#e2 p').offset();
+
+        console.log("Posición Left: " + pos.left + " Posicion Top: " + pos.top);
+        console.log("Posición Left: " + pos2.left + " Posicion Top: " + pos2.top);
+      });
+    </script>
+    <style>
+      body, html {
+        background: #000;
+        margin: 0;
+        padding: 0;
+      }
+      #e1, #e2 {
+        background: #0080FF;
+        display: block;
+        height: 100px;
+        margin: 20px auto;
+        width: 400px;
+      }
+      #e1 {
+        background: #FF0040;
+        height: 150px;
+      }
+      #e2 {
+        padding: 15px;
+        border-radius: 60px 0 60px 0;
+      }
+      p {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <center><img src="img/codigoFacilito.jpg" alt="CF"/></center>
+    </header>
+    <div id="e1"></div>
+    <div id="e2">
+      <p>Hola amigos!</p>
+    </div>
+  </body>
+</html>
