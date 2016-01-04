@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vincular y Desvincular eventos</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function() {
+        // http://api.jquery.com/category/events/
+        var caja1bg, v = 0;
+        /* Forma 1
+        $('#caja1').mouseover(function() {
+          caja1bg = $(this).css('background');
+          $(this).css('background', 'red');
+        });
+
+        $('#caja1').mouseout(function() {
+          $(this).css('background', caja1bg);
+        });*/
+
+        /* Forma 2
+        $('#caja1').on('mouseover', function() {
+          caja1bg = $(this).css('background');
+          $(this).css('background', 'red');
+        });
+
+        $('#caja1').on('mouseout', function() {
+          $(this).css('background', caja1bg);
+        });*/
+
+        // Forma 3
+        /* var f1 = function() {
+          console.log('Pasaste el cursor');
+        };
+
+        var f2 =  function() {
+          v++; caja1bg = $(this).css('background');
+          $(this).css('background', 'red');
+        };
+
+        $('#caja1').on({
+          'mouseover': f2,
+          'mouseout': function() {
+            $(this).css('background', caja1bg);
+            if (v > 3)
+              $("#caja1").off('mouseover', f2);
+          }
+        });
+        $('#caja1').on('mouseover', f1);*/
+
+        $('#caja1').one('mouseover', function() {
+          caja1bg = $(this).css('background');
+          $(this).css('background', 'red');
+        });
+
+        $('#caja1').on('mouseout', function() {
+          $(this).css('background', caja1bg);
+        });
+      });
+    </script>
+    <style>
+    body, html {
+      background: #FFF;
+      margin: 10px;
+      padding: 10px;
+    }
+    div {
+      background: #7C7C7C;
+      height: 80px;
+      display: block;
+      width: 400px;
+      margin: 2px auto;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="caja1"></div>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Eventos en JQuery</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function() {
+        $('a').on('click', function(e) {
+          // Mas información: http://api.jquery.com/category/events/
+          e.preventDefault();
+          console.log(e.pageX + "  " + e.pageY);
+          console.log($(this).attr('id'));
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <a href="http://www.codigofacilito.com" id='evento'>Hola</a>
+    <a href="http://www.codigofacilito.com" id='eventoDos'>Hola Dos</a>
+  </body>
+</html>

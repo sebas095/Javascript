@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Metodo Data JQuery</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function() {
+        // Metodo data(elemento, nombre del atributo, valor)
+        $('ul li').each(function(index, element) {
+          $.data(element, 'posicion', index);
+        });
+
+        $('ul li').each(function(index, element) {
+          console.log($.data(element, 'posicion'));
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li>Uno</li>
+      <li>Dos</li>
+      <li>Tres</li>
+    </ul>
+  </body>
+</html>

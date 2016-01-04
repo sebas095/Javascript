@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Características del Navegador</title>
+    <!-- Version de Jquery despues de la 1.7.2 no tiene la variable
+    browser recomendable usa modernizr -->
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script>
+      s = "Versión: " + $.browser.version;
+      if ($.browser.msie)
+        s += " El navegador es IE";
+      else s += " El navegador no es IE";
+      alert(s);
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
