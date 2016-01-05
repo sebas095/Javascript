@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Animaciones Parte II</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function() {
+        $.fx.speeds.lentooo = 3000;
+        $.fx.speeds.muyRapido = 100;
+        $('#boton').click(function() {
+          $('#ejemplo').fadeOut('lentooo', function() {
+            // $('body').append('El elemento se ha borrado');
+            // this.remove();
+            $(this).fadeIn('muyRapido');
+          });
+        });
+      });
+    </script>
+    <style>
+      #ejemplo {
+        height: 200px;
+        width: 400px;
+        background-color: rgb(250, 100, 100);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ejemplo"></div>
+    <button id="boton">Fade out</button>
+  </body>
+</html>
