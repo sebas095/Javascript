@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Get Script</title>
+    <style media="screen">
+      #ejemplo {
+        height: 200px;
+        width: 400px;
+        background-color: rgb(250, 100, 100);
+      }
+    </style>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+      $(function() {
+        var path = 'http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js';
+        $.getScript(path, function() {
+          console.log('Termino');
+          $('#ejemplo').slideUp(3000, 'easeOutBounce');
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="ejemplo"></div>
+  </body>
+</html>

@@ -6,7 +6,10 @@
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>
       $(function() {
-        $.get('hola.html', function(data) {
+        /*$.get('hola.html', function(data) {
+          $('#receptor').html(data);
+        });*/
+        $.get('hola.php',{nombre: "codigoFacilito"},function(data) {
           $('#receptor').html(data);
         });
       });
