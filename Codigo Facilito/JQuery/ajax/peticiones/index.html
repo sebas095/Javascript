@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Peticiones ajax con JQuery</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/spin.js/1.2.7/spin.min.js"></script>
+    <script>
+      $(function() {
+        var pet = $('#main form').attr('action');
+        var met = $('#main form').attr('method');
+        var nom, m, msj;
+
+        $('#main form').on('submit', function(e) {
+          e.preventDefault();
+          $.ajax({
+            // Funcion que se ejecuta antes de que se mande la peticion
+            beforeSend: function() {
+              #('#status').spin({radius:3, width:2, height:2, length:4});
+              nom = document.fo.nombre.value;
+              m = document.fo.mail.value;
+              msj = document.fo.mensaje.value;
+            },
+            url: pet,
+            type: met,
+            //$('#main form').serialize()
+            data: {nombre:nom, mail:m, mensaje:msj},
+            // resp = info: si la info se guardo, mando, si esta bien o no la info, etc
+            sucess: function(resp) {
+              if (resp == 'Correcto')
+                $('#status').html('<img src="./img/ok.png"/>');
+              else {
+                $('#status').html('<img src="./img/x.gif"/>');
+                console.log(resp);
+              }
+            },
+            error: function(jqXHR, estado, error) {
+              $('#status').html('<img src="./img/x.gif"/>');
+              // estado puede tener: timeout, error, abort, parsererror
+              // error puede tener: not found, internal error, etc
+              console.log(estado);
+              console.log(error);
+            },
+            complete: function(jqXHR, estado) {
+              // Se ejecuta despues de que error o sucess sea ejecutada
+              // Estado: sucess, notmodified, timeout, error, abort, parsererror
+              console.log(Estado);
+            },
+            // Tiempo maximo de espera para una respuesta ms
+            timeout: 3000
+          });
+        });
+      });
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body, html {
+        padding: 5px;
+        font-family: Myriad Pro, Arial;
+        background: #111A29;
+        color: #FFF;
+      }
+      #main {
+        display: block;
+        margin: 0 auto;
+        width: 400px;
+      }
+      #main h1 {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+      ::selection {
+        background: #E04C22;
+        color: #FFF;
+      }
+      form {
+        display: block;
+        width: 100%;
+      }
+      input, textarea {
+        font-family: Myriad Pro, Arial;
+        color: #FFF;
+        border: 0;
+        outline: 0;
+        background: #1F61AD;
+        border-radius: 1px;
+        font-size: 20px;
+        margin: 10px auto;
+        width: 95%;
+        display: block;
+        max-height: 100px;
+      }
+      textarea {
+        max-width: 95%;
+        height: 100px;
+      }
+      input[type = submit] {
+        display: inline-block;
+        vertical-align: middle;
+        height: 25px;
+        width: 80%;
+        cursor: pointer;
+      }
+      #status {
+        display: inline-block;
+        vertical-align: middle;
+        width: 20px;
+        height: 20px;
+      }
+      #status img {
+        width: 20px;
+        height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h1>Formulario de Contacto</h1>
+      <form name="fo" action="peticion.php" method="post">
+        <input type="text" name="nombre" placeholder="Nombre..." />
+        <input type="email" name="mail" placeholder="Correo electrónico..." />
+        <textarea name="mensaje" placeholder="Mensaje..." ></textarea>
+        <div style="display:block; width:60%; margin:0 auto">
+          <input type="submit" name="send" value="Enviar" />
+          <div id="status"></div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
