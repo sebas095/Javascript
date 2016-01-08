@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Controlando Efectos con JQuery</title>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
+    <script>
+      $(function() {
+
+        // var to = setTimeout(pararAnim, 2000);
+        $.fx.off = true;
+
+        $('#caja1').animate({
+          marginBottom: "0px"
+        }, 5000, function() {
+          $('#caja1').animate({
+            marginTop: "-100px",
+            backgroundColor: '#0FD',
+            opacity: 0.5
+          });
+        })//.delay(2000).slideUp();
+
+        //$('#caja1').slideUp().delay(2000).slideDown();
+
+      });
+
+      function pararAnim() {
+        $('#caja1').stop();
+      }
+    </script>
+    <style>
+      body, html {
+        padding: 100px;
+      }
+      div {
+        display: block;
+        height: 80px;
+        width: 400px;
+        margin: 0 auto;
+      }
+      #caja1 {
+        background: rgba(56, 56, 56, 0.8);
+        margin-bottom: 100px;
+      }
+      #caja2 {
+        background: rgba(89, 69, 36, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="caja1"></div>
+    <div id="caja2"></div>
+  </body>
+</html>

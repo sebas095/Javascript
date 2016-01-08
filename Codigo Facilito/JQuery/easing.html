@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Easing</title>
+    <style>
+      #ejemplo {
+        height: 200px;
+        width: 400px;
+        background-color: rgb(250, 100, 100);
+      }
+    </style>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js"></script>
+    <script>
+      $(function() {
+        $('#boton').click(function() {
+          // slideUp(tiempo de animacion, velocidad de la animacio)
+          $('#ejemplo').slideUp('fast', 'easeOutBounce');
+          $(this).animate({
+            height: ['+=100', 'easeOutBounce'],
+            width: ['+=50', 'linear']
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="ejemplo"></div>
+    <button id="boton">Mover</button>
+  </body>
+</html>

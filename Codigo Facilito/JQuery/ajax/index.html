@@ -16,7 +16,7 @@
           $.ajax({
             // Funcion que se ejecuta antes de que se mande la peticion
             beforeSend: function() {
-              #('#status').spin({radius:3, width:2, height:2, length:4});
+              $('#status').spin({radius:3, width:2, height:2, length:4});
               nom = document.fo.nombre.value;
               m = document.fo.mail.value;
               msj = document.fo.mensaje.value;
@@ -44,7 +44,7 @@
             complete: function(jqXHR, estado) {
               // Se ejecuta despues de que error o sucess sea ejecutada
               // Estado: sucess, notmodified, timeout, error, abort, parsererror
-              console.log(Estado);
+              console.log(estado);
             },
             // Tiempo maximo de espera para una respuesta ms
             timeout: 3000
