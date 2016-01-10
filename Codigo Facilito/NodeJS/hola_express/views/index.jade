@@ -1,0 +1,29 @@
+html
+  head
+    title Mi primera página con Express
+  body
+    // h1!= hola
+    // - permite hacer codigo js
+    // = ejecuta la instruccion js como un string asi tal como esta
+    // != puede interpretar cadenas como etiquetas html y permite crear variables para usar en render
+    - var arreglo = [1, 2, 3, 4, 5];
+    // if true o tambien se puede - if (true)
+    // - for (var i = 0; i < arreglo.length; i++) 
+        // p!= "<h1>" + arreglo[i] + "</h1"
+        
+        // Interpolacion de codigo js
+        // p Hola #{arreglo[i]}
+        
+        // Interpolacion de etiquetas html
+        //p.
+          // Hola haz click en #[a(href="codigofacilito.com") este link] por favor
+    
+    each item in arreglo
+      p= item
+      case item
+        when 1
+          p El item era 1
+        when 2
+          p El item era 2
+        default
+          p El item no era ni uno, ni dos
