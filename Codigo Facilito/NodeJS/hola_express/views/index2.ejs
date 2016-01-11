@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hola Mundo con Express</title>
+  </head>
+  <body>
+    <h1><%= hola %></h1>
+    <% var arreglo = [1, 2, 3, 4]; %>
+    <!-- <% for (var i = 0; i < arreglo.length; i++) {%>
+      <h1><% arreglo[i] %></h1>
+      Hola haz click en <a href="https://codigofacilito.com/">este link</a> por favor
+      <p>Hola <%= arreglo[i] %> </p>
+    <% } %> -->
+    <% for (var i in arreglo) {%>
+      <p><%= arreglo[i] %></p>
+      <% if (arreglo[i] == 1) {%>
+        <p>El Item era 1<p/>
+      <% continue; } %>
+      <% if (arreglo[i] == 2) {%>
+        <p>El Item era 2<p/>
+      <% continue; } %>
+        <p>El item no era ni uno, ni dos</p>
+    <% } %>
+  </body>
+</html>
