@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Node.js</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    
+    <!-- JQuery-->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  
+    <!-- Scroll del chat -->
+    <style type="text/css">
+      #chat {
+        position: relative;
+        width: 100%;
+        float: left;
+        min-height: 100%;
+        height: 90%;
+        overflow: auto;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1>Node.js Chat <small>Developer by <a href="https://github.com/sebas095/" target="_blank">Sebastian Duque</a></small></h1>
+      </div>
+      <div id="content" class="row" style="height: 70%;">
+        <div class="col-md-2"></div>
+        <div id="chat-content" class="col-md-6">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              CHAT
+            </div>
+            <div id="chat" class="panel-body"></div>
+          </div>
+          <div>
+            <form id="sendMessage" class="input-group" style="text-align: center; margint: 0 auto;">
+              <input id="message" class="form-control input-lg" type="text" />
+              <span class="input-group-btn">
+                <button class="btn btn-lg btn-primary" type="submit">Send</button>
+              </span>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Import Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      $(function() {
+        var socket = io.connect();
+        var $messageForm = $('#sendMessage');
+        var $message = $('#message');
+        var $chat = $('#chat');
+        
+        $messageForm.submit(function(ev) {
+            ev.preventDefault();
+            if ($message.val() != '') socket.emit('sendMessage', $message.val());
+            $message.val('');
+        });
+        
+        socket.on('newMessage', function(data) {
+          $chat.append(' - ' + data.msg + "<br/>");
+        });
+        
+      });
+    </script>
+    
+  </body>
+</html>
