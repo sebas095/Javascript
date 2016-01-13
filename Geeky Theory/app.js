@@ -9,7 +9,7 @@ server.listen(process.env.PORT, process.env.IP);
 app.get('/', (req, res) => res.sendfile(__dirname + '/index.html'));
 
 io.sockets.on('connection', socket => {
-    // Evento con el mjs que queramos: sendMessage
+    // Evento con el msj que queramos: sendMessage
     socket.on('sendMessage', data => {
         io.sockets.emit('newMessage', {msg: data});
     });
