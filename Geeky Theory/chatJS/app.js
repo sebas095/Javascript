@@ -3,8 +3,8 @@ var express = require("express"),
     server = require("http").createServer(app),
     io = require("socket.io").listen(server);
 
-// server.listen(8080);
-server.listen(process.env.PORT, process.env.IP);
+server.listen(8080);
+// server.listen(process.env.PORT, process.env.IP);
 
 app.get('/', (req, res) => res.sendfile(__dirname + '/index.html'));
 
@@ -14,5 +14,3 @@ io.sockets.on('connection', socket => {
         io.sockets.emit('newMessage', {msg: data});
     });
 });
-
-console.log(__dirname);
