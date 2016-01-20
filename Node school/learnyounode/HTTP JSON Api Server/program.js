@@ -31,7 +31,7 @@ var server = http.createServer((req, res) => {
   }
   else {
     res.writeHead(400);
-    res.end('File Not Found');
+    res.end('404 Not Found');
   }
 });
 
