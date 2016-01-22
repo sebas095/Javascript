@@ -3,8 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Atributos</title>
-    <script src="http://fb.me/react-with-addons-0.12.0.js"></script>
-    <script src="http://fb.me/JSXTransformer-0.12.0.js"></script>
+    <script src="https://fb.me/react-0.14.6.js"></script>
+    <script src="https://fb.me/react-dom-0.14.6.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  </head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
   <body>
@@ -12,7 +14,7 @@
       <div id="ejemplo"></div>
       <div id="formulario"></div>
     </div>
-    <script type="text/jsx">
+    <script type="text/babel">
       var Componente = React.createClass({
         render: function() {
           return <h1>Curso de {this.props.descripcion}</h1>;
@@ -40,8 +42,8 @@
         }
       });
 
-      React.renderComponent(<Componente descripcion="React.js en Develoteca"/>, document.getElementById('ejemplo'));
-      React.renderComponent(<ComponenteFormulario nombre="nombre" etiqueta="Escribe nombre completo"/>, document.getElementById('formulario'));
+      ReactDOM.render(<Componente descripcion="React.js en Develoteca"/>, document.getElementById('ejemplo'));
+      ReactDOM.render(<ComponenteFormulario nombre="nombre" etiqueta="Escribe nombre completo"/>, document.getElementById('formulario'));
     </script>
   </body>
 </html>
