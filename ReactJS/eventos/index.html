@@ -20,6 +20,8 @@
     <script type="text/babel">
       var ListaTareas = React.createClass({
         createElement: function(itemText) {
+          // Se usa bind en oncClick para que haga bien la referencia al metodo delete de Aplicación
+          // Tareas ya que si no se hace tomaria el this global y eso no es lo que se espera que suceda
           return (
             <li className="ui-state-default">
               <div className="checkbox">
