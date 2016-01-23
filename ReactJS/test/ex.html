@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <script src="../bootstrap/js/jquery-2.1.4.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <style>
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row-fluid">
+        <div class="col-sm-12">&nbsp;</div>
+        <div class="col-sm-2"></div>
+
+        <div class="col-sm-8">
+          <ul class="nav nav-pills navbar-inverse">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Menú</a></li>
+            <li><a href="">Problemas</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Contest
+                <span class="glyphicon glyphicon-triangle-bottom btn-xs"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Crear Contest</a></li>
+                <li><a href="#">Ver Contest</a></li>
+                <li><a href="#">More</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-2"></div>
+      </div>
+    </div>
+  </body>
+</html>
