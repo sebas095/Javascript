@@ -1,4 +1,4 @@
-extends ./layout.jade
+extends ./layout1.jade
 block contenido
   form(action="/users", method="post")
     div(class="form-group")
@@ -7,5 +7,6 @@ block contenido
     div
       label(for="password") Password  
       input(type="password", name="password", placeholder="Password", id="password", class="form-control")
+      br    
     div
       input(type="submit", value="Iniciar Sesión", class="btn btn-info")

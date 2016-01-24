@@ -9,6 +9,7 @@
   "author": "Sebastian Duque Restrepo",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.14.2",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
     "express-partials": "^0.3.0",
