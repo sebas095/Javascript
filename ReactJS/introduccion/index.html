@@ -11,11 +11,24 @@
     <div id="ejemplo"></div>
 
     <script type="text/babel">
+      /* Forma 1
       var Saludo = React.createClass({
         render: function() {
           return <div>&iexcl;Hola {this.props.nombre}! </div>;
         }
-      });
+      });*/
+
+      // Forma 2
+
+      class Saludo extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+
+        render() {
+          return <div>&iexcl;Hola {this.props.nombre}! </div>;
+        }
+      }
 
       ReactDOM.render(<Saludo nombre="Sebastian"/>, document.body);
     </script>
