@@ -35,7 +35,6 @@
       class ComponenteCalculadora extends React.Component {
         constructor(props) {
           super(props);
-          this.BorrarPantalla = this.BorrarPantalla.bind(this);
           this.state = {
             data: this.props.data,
             txtSalida: 0
@@ -71,14 +70,13 @@
         }
 
         render() {
-          var self = this;
           var mBottom = {marginBottom: '10px'};
           var ClaseBotones = 'btn-lg btn-block btn btn-';
-          var ListaBotones = this.state.data.map(function(item) {
+          var ListaBotones = this.state.data.map((item) => {
             return (
               <div className="col-md-3" style={mBottom} >
-      				  <input type="button"  onClick={self.EvaluarBotones.bind(self,item)}
-                 className={ClaseBotones + self.EvaluaColores(item)} value={item}/>
+      				  <input type="button"  onClick={this.EvaluarBotones.bind(this, item)}
+                 className={ClaseBotones + this.EvaluaColores(item)} value={item}/>
       				</div>
             );
           });
@@ -96,7 +94,7 @@
                 placeholder: "Disabled"
               }),
               (<div className="row">{ListaBotones}</div>),
-              <input onClick={this.BorrarPantalla} type="button" className="btn btn-danger btn-block" value="Clear"/>
+              <input onClick={this.BorrarPantalla.bind(this)} type="button" className="btn btn-danger btn-block" value="Clear"/>
             ]
           });
         }
