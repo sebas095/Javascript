@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JSON</title> <script src="https://fb.me/react-0.14.6.js"></script>
+    <script src="https://fb.me/react-dom-0.14.6.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <div>&nbsp;</div>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div id="Tareas" class="col-md-6"></div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+    <script type="text/babel">
+      var ListaTareas = React.createClass({
+        createElement: function(itemText) {
+          // Se usa bind en oncClick para que haga bien la referencia al metodo delete de Aplicación
+          // Tareas ya que si no se hace tomaria el this global y eso no es lo que se espera que suceda
+          return (
+            <li className="ui-state-default">
+              <div className="checkbox">
+                <label>
+                  <button className="btn btn-danger" onClick={this.props.deleteState.bind(this, itemText)}>X</button>
+                  &nbsp;&nbsp;
+                  {itemText.titulo}
+                </label>
+              </div>
+            </li>);
+        },
+
+        render: function() {
+          return (
+            <ul id="sortable" className="list-unstyled">
+              {this.props.elementsList.map(this.createElement)}
+            </ul>
+          );
+        }
+      });
+
+      var AplicacionTareas = React.createClass({
+        getInitialState: function() {
+          return {
+            elementsList: ["Elemento 1", "Elemento 2"],
+            text: ''
+          };
+        },
+
+        componentWillMount: function() {
+          this.updateInfo();
+        },
+
+        updateInfo: function() {
+          $.get("../Datos/index.php", function(result) {
+            this.setState({elementsList: result});
+          }.bind(this));
+        },
+
+        deleteState: function(itemToDelete, ev) {
+          var elements = this.state.elementsList;
+          var index = elements.indexOf(itemToDelete);
+          // Remueve un elemento en la posicion index
+          elements.splice(index, 1);
+          this.setState({elementsList: elements});
+        },
+
+        changeState: function(ev) {
+          // Accede al valor del input
+          this.setState({text: ev.target.value});
+        },
+
+        submitState: function(ev) {
+          /*ev.preventDefault();
+          var nextElement = this.state.elementsList.concat([this.state.text]);
+          var nextText = '';
+          this.setState({elementsList: nextElement, text: nextText});*/
+          // Insertar datos en la BD
+          $.ajax({
+            url: "../Datos/index.php",
+            dataType: 'json',
+            type: 'POST',
+            data: {titulo: this.state.text, accion: 1},
+            success: function(data) {}.bind(this)
+          });
+          this.updateInfo();
+        },
+
+        render: function() {
+          // Al oprimir enter se actualiza la lista
+          // onSubmit trabaja de forma sincrona
+          // onClick trabaja asincrono
+          return (
+            <div>
+              <h3>Lista de Tareas</h3>
+              <form onSubmit={this.submitState}>
+                <input className="form-control" placeholder="Agregar a la lista" onChange={this.changeState} value={this.state.text}/>
+                <br/>
+                <input type="button" onClick={this.submitState} className="btn btn-success btn-block"
+                  value={"Agregar a lista #" + (this.state.elementsList.length)}
+                />
+              </form>
+              <hr/>
+              <ListaTareas elementsList={this.state.elementsList} deleteState = {this.deleteState}/>
+            </div>
+          );
+        }
+      });
+
+      ReactDOM.render(<AplicacionTareas/>, document.getElementById('Tareas'));
+   </script>
+  </body>
+</html>
