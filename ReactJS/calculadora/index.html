@@ -60,8 +60,8 @@
           }
           else {
             if ((this.state.txtSalida == 0)) {
-              if (signos.indexOf(itemPresionado) > -1) this.setState({txtSalida: 0});
-              else                                     this.setState({txtSalida: itemPresionado});
+              if (signos.indexOf(itemPresionado) >-1) this.setState({txtSalida: 0});
+              else                                    this.setState({txtSalida: itemPresionado});
             }
             else {
               this.setState({txtSalida: this.state.txtSalida+itemPresionado});
