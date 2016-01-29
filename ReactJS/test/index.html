@@ -25,6 +25,36 @@
     </div>
 
     <script type="text/babel">
+      class ButtonComponent extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            name: this.props.name,
+            values: this.props.values
+          };
+        }
+
+        render() {
+          if (this.state.values.length == 0) {
+            return <li><a href="#">{this.state.name}</a></li>;
+          }
+          else {
+            var listOptions = this.state.values.map((item) => {
+              return <li><a href="#">{item}</a></li>
+            });
+            return (
+              <li className="dropdown">
+                <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                  {this.state.name}
+                  <span className="caret"></span>
+                </a>
+                <ul className="dropdown-menu">{listOptions}</ul>
+              </li>
+            );
+          }
+        }
+      }
+
       class MenuComponent extends React.Component{
         constructor(props) {
           super(props);
@@ -35,7 +65,7 @@
 
         render() {
           var tmp = this.state.option.map((item) => {
-            return <li><a href="#">{item.name}</a></li>;
+            return <ButtonComponent name={item.name} values={item.values}/>;
           });
           return (
             <div className="col-sm-8">
@@ -59,7 +89,7 @@
         },
         {
          "name": "Contest",
-         "values": []
+         "values": ["Crear Contest", "Ver Contest", "More"]
        }
       ];
 
