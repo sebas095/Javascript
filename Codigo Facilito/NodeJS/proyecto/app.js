@@ -8,6 +8,9 @@ var Schema = mongoose.Schema;
 
 mongoose.connect("mongodb://localhost/fotos");
 
+// Colecciones => tablas
+// Documentos => filas
+
 var userSchemaJSON = {
   email: String,
   password: String
