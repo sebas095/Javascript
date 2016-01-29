@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <script src="../bootstrap/js/jquery-2.1.4.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="./data.js"></script>
     <style>
      .dropdown:hover .dropdown-menu {
        display: block;
@@ -40,7 +41,7 @@
           }
           else {
             var listOptions = this.state.values.map((item) => {
-              return <li><a href="#">{item}</a></li>
+              return <li><a href={item.url}>{item.name}</a></li>
             });
             return (
               <li className="dropdown">
@@ -73,25 +74,6 @@
             </div>);
         }
       }
-
-      var opt = [
-        {
-          "name": "Home",
-          "values": []
-        },
-        {
-          "name": "Menú",
-          "values": []
-        },
-        {
-          "name": "Problemas",
-          "values": []
-        },
-        {
-         "name": "Contest",
-         "values": ["Crear Contest", "Ver Contest", "More"]
-       }
-      ];
 
       ReactDOM.render(<MenuComponent option = {opt}/>, document.getElementById('idMenu'));
     </script>
