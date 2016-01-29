@@ -13,7 +13,7 @@ var opt = [
   },
   {
    "name": "Contest",
-   "values": [{"name": "Crear Contest", "url": "https://www.youtube.com/watch?v=uaGTjis_ibU"},
+   "values": [{"name": "Crear Contest", "url": "#"},
               {"name": "Ver Contest",   "url": "#"},
               {"name": "More",          "url": "#"}]
  }
