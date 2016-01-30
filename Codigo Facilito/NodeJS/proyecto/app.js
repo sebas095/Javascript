@@ -2,22 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser'); // Permite extraer parametros del html como form, etc
 var app = express();
 var partials = require('express-partials');
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var User = require('./models/user').User;
 // var expressLayouts = require('express-ejs-layouts');
-
-mongoose.connect("mongodb://localhost/fotos");
-
-// Colecciones => tablas
-// Documentos => filas
-
-var userSchemaJSON = {
-  email: String,
-  password: String
-};
-
-var user_schema = new Schema(userSchemaJSON);
-var User = mongoose.model("User", user_schema);
 
 app.set("view engine", "jade");
 // app.set("view engine", "ejs");
