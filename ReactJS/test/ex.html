@@ -10,11 +10,24 @@
       .dropdown:hover .dropdown-menu {
         display: block;
       }
+      #login {
+        display: none;
+      }
+      #register {
+        display: none;
+      }
     </style>
+    <script type="text/javascript">
+      function display(select) {
+        var other = (select == "#login")? "#register" : "#login";
+        document.querySelector(select).style.display = "block";
+        document.querySelector(other).style.display = "none";
+      }
+    </script>
   </head>
   <body>
     <div class="container">
-      <div class="row-fluid">
+      <div class="row">
         <div class="col-sm-12">&nbsp;</div>
         <div class="col-sm-2"></div>
 
@@ -34,11 +47,149 @@
                 <li><a href="#">More</a></li>
               </ul>
             </li>
+            <li class="pull-right">
+              <a href="#" onclick='display("#login")'>
+                <span class="glyphicon glyphicon-record"></span>
+                &nbsp;Login
+              </a>
+            </li>
+            <li class="pull-right">
+              <a href="#" onclick='display("#register")'>
+                <span class="glyphicon glyphicon-pencil"></span>
+                &nbsp;Register
+              </a>
+            </li>
           </ul>
         </div>
-
         <div class="col-sm-2"></div>
       </div>
+
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-8">
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+
+          <form action="#" class="form-horizontal" id="login" role="form">
+            <div class="form-group">
+              <div class="col-sm-3">
+                <span class="glyphicon glyphicon-user"></span>
+                <label for="user" class="form-label">Username</label>
+              </div>
+              <div class="col-sm-5">
+                <input class="form-control" type="text" name="username" id="user">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-3">
+                <span class="glyphicon glyphicon-check"></span>
+                <label for="pwd" class="form-label">Password</label>
+              </div>
+              <div class="col-sm-5">
+                <input class="form-control" type="password" name="username" id="pwd">
+              </div>
+            </div>
+            <div class="form-group checkbox">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-5">
+              <label class="form-label"><input type="checkbox" value="">Remember Me</label>
+              </div>
+            </div><br>
+            <div class="form-group">
+              <div class="col-sm-5"></div>
+              <input type="button" class="btn btn-success" name="sign" value="Sign In">
+            </div>
+          </form>
+
+          <form action="#" class="form-horizontal" id="register" role="form">
+            <div class="form-group">
+              <div class="col-sm-5">
+                <span class="glyphicon glyphicon-user"></span>
+                <label for="user" class="form-label">Username</label>
+              </div>
+              <div class="col-sm-5">
+                <input class="form-control" type="text" name="username" id="user">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-5">
+                <span class="glyphicon glyphicon-edit"></span>
+                <label for="name" class="form-label">Full Name</label>
+              </div>
+              <div class="col-sm-5">
+                <input class="form-control" type="text" name="name" id="name">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-5">
+                <span class="glyphicon glyphicon-check"></span>
+                <label for="pwd" class="form-label">Password</label>
+              </div>
+              <div class="col-sm-5">
+                <input class="form-control" type="password" name="pwd" id="pwd">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-5">
+                <span class="glyphicon glyphicon-ok-sign"></span>
+                <label for="cpwd" class="form-label">Confirm Password</label>
+              </div>
+              <div class="col-sm-5">
+                <input class="form-control" type="password" name="cpwd" id="cpwd">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-5">
+                <span class="glyphicon glyphicon-envelope"></span>
+                <label for="mail" class="form-label">Email</label>
+              </div>
+              <div class="col-sm-5">
+                <input class="form-control" type="email" name="mail" id="mail">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-5">
+                <span class="glyphicon glyphicon-ok-circle"></span>
+                <label for="cmail" class="form-label">Confirm Email</label>
+              </div>
+              <div class="col-sm-5">
+                <input class="form-control" type="email" name="cmail" id="cmail">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-5">
+                <span class="glyphicon glyphicon-globe"></span>
+                <label for="country" class="form-label">Country</label>
+              </div>
+              <div class="col-sm-5">
+                <input class="form-control" type="text" name="country" id="country">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-5">
+                <span class="glyphicon glyphicon-education"></span>
+                <label class="form-label">Contest, Group, Team Invitation</label>
+              </div>
+              <div class="col-sm-5">
+                <select name="Invitation" class="form-control">
+              		<option value=""></option>
+              		<option value="Anybody">Anybody can invite me</option>
+              		<option value="Friends">Only my friends can invite me</option>
+              		<option value="Nobody">Nobody can invite me</option>
+            		</select>
+              </div>
+            </div><br>
+            <div class="form-group">
+              <div class="col-sm-4"></div>
+              <input type="button" class="btn btn-success" name="sign" value="Sign Up">
+            </div>
+          </form>
+
+        </div>
+        <div class="col-sm-1"></div>
+      </div>
+
     </div>
   </body>
 </html>

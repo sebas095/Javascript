@@ -34,20 +34,22 @@
           super(props);
           this.state = {
             name: this.props.name,
+            active: this.props.active,
             values: this.props.values
           };
         }
 
         render() {
+          var active = (this.state.active)? "active " : "";
           if (this.state.values.length == 0) {
-            return <li><a href="#">{this.state.name}</a></li>;
+            return <li className={active}><a href="#">{this.state.name}</a></li>;
           }
           else {
             var listOptions = this.state.values.map((item) => {
               return <li><a href={item.url}>{item.name}</a></li>
             });
             return (
-              <li className="dropdown">
+              <li className={active + "dropdown"}>
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                   {this.state.name}
                   <span className="caret"></span>
@@ -69,16 +71,26 @@
 
         render() {
           var tmp = this.state.option.map((item) => {
-            return <ButtonComponent name={item.name} values={item.values}/>;
+            return <ButtonComponent name={item.name} active={item.active} values={item.values}/>;
           });
           return (
             <div className="col-sm-10">
               <ul id="marco" className="nav nav-pills navbar-inverse">
                 {tmp}
-                <li className="pull-right"><a href="#">Login</a></li>
-                <li className="pull-right"><a href="#">Registrarse</a></li>
+                <li className="pull-right">
+                  <a href="#">
+                    <span className="glyphicon glyphicon-record"></span>
+                    &nbsp;Login
+                  </a>
+                </li>
+                <li className="pull-right">
+                <a href="#">
+                  <span className="glyphicon glyphicon-pencil"></span>
+                    &nbsp;Register
+                  </a>
+                </li>
                 <li>
-                  <form action="" className="navbar-form" role="search">
+                  <form action="#" className="navbar-form" role="search">
                     <input type="text" className="form-control" placeholder="Search"/>
                   </form>
                 </li>
