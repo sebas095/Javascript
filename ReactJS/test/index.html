@@ -124,12 +124,12 @@
         constructor(props) {
           super(props);
           this.state = {
-            select = this.props.select
+            select: this.props.select
           };
         }
 
         render() {
-          
+
         }
       }
 
@@ -150,7 +150,35 @@
         }
 
         render() {
+          var icon = (this.state.icon != "")? "glyphicon glyphicon-" + this.state.icon : "";
+          var col_label = (this.state.col_label != "0")? "col-md-" + this.state.col_label : "";
+          var col_input = (this.state.col_input != "0")? "col-md-" + this.state.col_input : "";
+          var tag = this.state.tag;
+          var component;
+          switch (tag) {
+            case "input":
+              component = (
+                <div>
+                  <div className={col_label}>
+                    <span className={icon}></span>
+                    <label htmlFor={this.state.id}>{this.state.name}</label>
+                  </div>
+                  <div className={col_input}>
+                    <input className="form-control" type={this.state.type} name={this.state.name} id={this.state.id}/>
+                  </div>
+                </div>
+              );
+              break;
+            case "checkbox":
+              <div></div>
+              break;
+            case "btn":
+              <div></div>
+              break;
+          }
 
+          return
+          // fALTA...
         }
       }
 
@@ -163,13 +191,23 @@
         }
 
         render() {
-
+          var forms = this.state.elements.map(el => {
+            return (<InputComponent col_label={this.state.elements.col_label} col_input={this.state.elements.col_input}
+                    type={this.state.elements.type} id={this.state.elements.id} icon={this.state.elements.icon}
+                    name={this.state.elements.name} tag={this.state.elements.tag} newline={this.state.elements.newline}
+                    select={this.state.elements.select}/>);
+          });
+          return (
+            <form className="form-horizontal">
+              {forms}
+            </form>
+          );
         }
       }
 
-      ReactDOM.render(<MenuComponent option = {nav_bar}/>, document.getElementById('idMenu'));
-      //ReactDOM.render(<FormComponent elements = {form_login}/>, document.getElementById('login'));
-      //ReactDOM.render(<FormComponent elements = {form_register}/>, document.getElementById('register'));
+      ReactDOM.render(<MenuComponent option = {data.nav_bar}/>, document.getElementById('idMenu'));
+      ReactDOM.render(<FormComponent elements = {data.form_login}/>, document.getElementById('login'));
+      //ReactDOM.render(<FormComponent elements = {data.form_register}/>, document.getElementById('register'));
     </script>
   </body>
 </html>
