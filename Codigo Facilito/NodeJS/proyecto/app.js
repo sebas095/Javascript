@@ -27,6 +27,7 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/users", (req, res) => {
+  // documento => instancia del modelo
   var user = new User({
     email: req.body.email,
     password: req.body.password,
@@ -36,9 +37,18 @@ app.post("/users", (req, res) => {
 
   console.log(user.password_confirmation);
 
-  user.save((err) => {
+  /*user.save((err, user, numero) => {
     if (err) console.log(String(err));
     res.send("Guardamos tus datos.");
+  });*/
+
+  // Promises ECS6
+  user.save().then((user) => {
+    res.send("Guardamos el usuario exitosamente");
+  },
+  (err) => {
+    console.log(String(err));
+    res.send("No pudimos guardar la información.");
   });
 
 });
