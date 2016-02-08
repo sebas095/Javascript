@@ -11,11 +11,15 @@ const server = http.createServer();
 
 // Callbacks
 var onRequest = (req, res) => {
-  let fileName = path.join(__dirname, 'public', 'index.html');
-  fs.readFile(fileName, (err, file) => {
-    if (err) return res.end(err.message);
-    res.setHeader('Content-Type', 'text/html');
-    res.end(file);
+  let index = path.join(__dirname, 'public', 'index.html');
+
+  // Creamos un RS para leer de manera eficiente el archivo
+  // El RS pasa los datos a res cada que tenga algo en el buffer del archivo
+  let rs = fs.createReadStream(index);
+  rs.pipe(res);
+
+  rs.on('error', (err) => {
+    res.end(err.message);
   });
 }
 
