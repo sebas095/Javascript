@@ -11,5 +11,8 @@
     "url": "https://github.com/sebas095/Javascript/Platzi/animate-server"
   },
   "author": "Sebastian Duque Restrepo <sebas_tian_95@hotmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "st": "^1.1.0"
+  }
 }
