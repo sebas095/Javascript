@@ -19,11 +19,15 @@ app.use(express.static('assets'));
 // Gets
 app.get("/", (req, res) => res.render("index1"));
 
-app.get("/login", (req, res) => {
+app.get("/signup", (req, res) => {
   User.find((err, doc) => {
     console.log(doc);
-    res.render("login1");
+    res.render("signup");
   });
+});
+
+app.get("/login", (req, res) => {
+  res.render("login1");
 });
 
 app.post("/users", (req, res) => {
@@ -51,6 +55,21 @@ app.post("/users", (req, res) => {
     res.send("No pudimos guardar la información.");
   });
 
+});
+
+app.post("/sessions", (req, res) => {
+  User.findById("56b436b01dcca8b337858602", (err, docs) => {
+    console.log("HOLA\n" + docs);
+  });
+
+  // Query, campos, callback
+  User.findOne({
+    email: req.body.email,
+    password: req.body.password
+    }, (err, docs) => {
+      console.log(docs);
+      res.send("Hola mundo");
+  });
 });
 
 app.listen(8080);
