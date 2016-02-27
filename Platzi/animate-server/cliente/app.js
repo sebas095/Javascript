@@ -9,10 +9,7 @@ const rtc = new Webrtc2Images({
   interval: 200
 });
 
-rtc.startVideo(function(err) {
-
-});
-
+rtc.startVideo();
 const record = document.querySelector('#record');
 
 record.addEventListener('click', function(ev) {
