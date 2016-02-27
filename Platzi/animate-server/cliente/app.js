@@ -1,3 +1,4 @@
+const xhr = require('xhr');
 const Webrtc2Images = require('webrtc2images');
 
 const rtc = new Webrtc2Images({
@@ -9,12 +10,29 @@ const rtc = new Webrtc2Images({
   interval: 200
 });
 
-rtc.startVideo();
+rtc.startVideo(function(err) {
+  if (err) return logError(err);
+});
+
 const record = document.querySelector('#record');
 
 record.addEventListener('click', function(ev) {
   ev.preventDefault();
   rtc.recordVideo(function(err, frames) {
-    console.log(frames);
+    if (err) logError(err);
+
+    xhr({
+      uri: "/process",
+      method: "post",
+      headers: {'Content-Type': "application/json"},
+      body: JSON.stringify({images: frames})
+    }, function(err, res, body) {
+      if (err) logError(err);
+      console.log(JSON.parse(body));
+    });
   });
 }, false);
+
+function logError(err) {
+  console.error(err);
+}
