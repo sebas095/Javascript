@@ -2,8 +2,8 @@ const xhr = require('xhr');
 const Webrtc2Images = require('webrtc2images');
 
 const rtc = new Webrtc2Images({
-  width: 800,
-  height: 400,
+  width: 200,
+  height: 200,
   frames: 10,
   type: "image/jpeg",
   quality: 0.8,
@@ -28,7 +28,15 @@ record.addEventListener('click', function(ev) {
       body: JSON.stringify({images: frames})
     }, function(err, res, body) {
       if (err) logError(err);
-      console.log(JSON.parse(body));
+
+      body = JSON.parse(body);
+
+      if (body.video) {
+        const video = document.querySelector('#video');
+        video.src = body.video;
+        video.loop = true;
+        video.play();
+      }
     });
   });
 }, false);

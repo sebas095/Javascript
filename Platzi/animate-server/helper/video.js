@@ -51,7 +51,7 @@ module.exports = function(images) {
 
   function encodeVideo(done) {
     let fileName = `${baseName}.webm`;
-    let rs = createReadStream(path.join(tmpDir, fileName));
+    let rs = fs.createReadStream(path.join(tmpDir, fileName));
 
     rs.pipe(concat(function(videoBuffer) {
       video = `data:video/webm;base64,${videoBuffer.toString('base64')}`;
