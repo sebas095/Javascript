@@ -15,6 +15,7 @@
   "author": "Sebastian Duque Restrepo <sebas_tian_95@hotmail.com>",
   "license": "ISC",
   "dependencies": {
+    "async": "^1.5.2",
     "body": "^5.1.0",
     "course": "0.0.1",
     "st": "^1.1.0",
