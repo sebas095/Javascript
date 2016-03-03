@@ -45,7 +45,7 @@ li p {
 }
 
 .video-container {
-  float: right;
+  float: left;
   height: 200px;
   width: 200px;
   position: relative;
@@ -70,8 +70,8 @@ footer form {
   width: 200px;
   height: 200px;
   background: #000;
-  bottom: 5px;
-  left: 5px;
+  bottom: 1px;
+  left: 1px;
   position: fixed;
   z-index: 6;
 }
