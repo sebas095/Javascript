@@ -3,9 +3,9 @@ var router = express.Router();
 
 /* app.com/app/ */
 
-router.get('/', (re1, res) => {
+router.get('/', (req, res) => {
   /* Buscar el usuario */
-  res.render("app/home");
+  res.render("./app/home");
 });
 
 module.exports = router;
