@@ -79,7 +79,7 @@ app.post("/sessions", (req, res) => {
     password: req.body.password
   }, (err, user) => {
       req.session.user_id = user._id;
-      res.send("Hola Mundo");
+      res.redirect("/app");
   });
 });
 

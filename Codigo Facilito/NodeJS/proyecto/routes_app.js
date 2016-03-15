@@ -5,6 +5,7 @@ var router = express.Router();
 
 router.get('/', (req, res) => {
   /* Buscar el usuario */
+
   res.render("./app/home");
 });
 
