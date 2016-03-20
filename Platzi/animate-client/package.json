@@ -1,0 +1,27 @@
+{
+  "name": "animate-server",
+  "version": "1.0.0",
+  "description": "A realtime chat with video and gifs",
+  "main": "server.js",
+  "scripts": {
+    "postinstall": "npm run build-js",
+    "build-js": "browserify -t hbsfy client/app.js -o public/js/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebas095/Javascript/Platzi/animate-client.git"
+  },
+  "author": "Sebastian Duque Restrepo <sebas_tian_95@hotmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "domify": "^1.4.0",
+    "handlebars": "^4.0.5",
+    "socket.io-client": "^1.4.5",
+    "uuid": "^2.0.1",
+    "webrtc2images": "^1.4.4"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "hbsfy": "^2.5.1"
+  }
+}
