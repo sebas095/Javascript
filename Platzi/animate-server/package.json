@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sebas095/Javascript/Platzi/animate-server"
+    "url": "https://github.com/sebas095/Javascript/tree/master/Platzi/animate-server"
   },
   "author": "Sebastian Duque Restrepo <sebas_tian_95@hotmail.com>",
   "license": "ISC",
   "dependencies": {
-    "animate-client": "git://github.com/sebas095/Javascript/tree/master/Platzi/animate-client.git",
+    "animate-client": "git://github.com/julianduque/animate-client.git",
     "async": "^1.5.2",
     "body": "^5.1.0",
     "concat-stream": "^1.5.1",
