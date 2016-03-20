@@ -22,6 +22,10 @@ module.exports = function(server) {
         delete message.frames;
         message.video = video;
 
+        db.save(message, function(err) {
+
+        });
+
         socket.broadcast.emit('message', message);
         socket.emit('messageack', message);
       });
