@@ -17,7 +17,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "webpack -w & ./node_modules/.bin/webpack-dev-server --content-base app --hot --inline",
+    "start": "webpack -w & ./node_modules/.bin/webpack-dev-server --content-base app/dist --hot --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sebastian Duque Restrepo",
