@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FilterableProductTable from './components/FilterableProductTable';
+import {Router, Route, IndexRouter, hashHistory} from 'react-router';
 
-let db = [
-  {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
-  {category: "Sporting Goods", price: "$9.99", stocked: true, name: "Baseball"},
-  {category: "Sporting Goods", price: "$29.99", stocked: false, name: "Basketball"},
-  {category: "Electronics", price: "$99.99", stocked: true, name: "iPod Touch"},
-  {category: "Electronics", price: "$399.99", stocked: false, name: "iPhone 5"},
-  {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
-];
+import Home from './routes/Home';
+import Store from './routes/Store';
 
 const app = document.getElementById('app');
-ReactDOM.render(<FilterableProductTable store={db}/>, app);
+ReactDOM.render(
+  <Router history={hashHistory}>
+    <Route path='/' component={Home}></Route>
+    <Route path='store' component={Store}></Route>
+  </Router>
+, app);
