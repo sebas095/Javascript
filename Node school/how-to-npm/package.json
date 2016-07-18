@@ -1,0 +1,23 @@
+{
+  "name": "@sebas095/how-to-npm",
+  "version": "1.1.1",
+  "description": "trying the workshop about how to npm in nodeschool",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebas095/Javascript/tree/master/Node%20school/how-to-npm"
+  },
+  "keywords": [
+    "how",
+    "to",
+    "npm",
+    "tutorial"
+  ],
+  "author": "Sebastian Duque Restrepo",
+  "license": "ISC",
+  "dependencies": {},
+  "homepage": "https://github.com/sebas095/Javascript/tree/master/Node%20school/how-to-npm#readme"
+}
