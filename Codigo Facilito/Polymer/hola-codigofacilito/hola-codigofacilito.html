@@ -1,35 +1,23 @@
+<!-- HTML Imports -->
 <link rel="import" href="../polymer/polymer.html">
-
-<!--
-`hola-codigofacilito`
-Muestra un mensaje de hola mundo
-
-@demo demo/index.html
--->
 
 <dom-module id="hola-codigofacilito">
   <template>
     <style>
+    /* Host -> hace referencia a todo el componente que estamos modificando */
       :host {
+        background-color: red;
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
-    <content></content>
+    <!-- HTML Templates -->
+    <h1>Hola Mundo</h1>
+
   </template>
 
   <script>
     Polymer({
-
-      is: 'hola-codigofacilito',
-
-      properties: {
-        prop1: {
-          type: String,
-          value: 'world',
-        },
-      },
-
+      is: "hola-codigofacilito"
     });
   </script>
 </dom-module>
