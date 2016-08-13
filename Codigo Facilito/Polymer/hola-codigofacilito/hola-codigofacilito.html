@@ -11,7 +11,7 @@
       }
     </style>
     <!-- HTML Templates -->
-    <h1>Hola [[name]], tienes [[edad]]</h1>
+    <h1 id="titulo">Hola [[name]], tienes [[edad]]</h1>
 
   </template>
 
@@ -26,8 +26,31 @@
         edad: {
           type: Number
         }
+      },
+      created: function() {
+        // Propiedades del elemento
+        console.log("El elemento se creo");
+        console.log(this);
+        console.log(this.$);
+      },
+      ready: function() {
+        // this.$ es para acceder al local DOM
+        console.log("El elemento esta listo");
+        console.log(this);
+        console.log(this.$);
+        console.log(this.$.titulo);
+      },
+      attached: function() {
+        // Trabajar con estilo ya procesados y eventos del Documento y no del componente
+        // Siempre se ejecuta despues de ready y mas de una vez a diferencia de ready
+        console.log("El elemento esta ya en el documento");
+      },
+      detached: function() {
+        // Se saca del DOM
+      },
+      attributeChanged: function() {
+        // Ocurre cuando algun atributo del componente que no este en properties haya cambiado
       }
     });
-    console.log(Polymer);
   </script>
 </dom-module>
