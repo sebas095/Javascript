@@ -11,13 +11,23 @@
       }
     </style>
     <!-- HTML Templates -->
-    <h1>Hola Mundo</h1>
+    <h1>Hola [[name]], tienes [[edad]]</h1>
 
   </template>
 
   <script>
     Polymer({
-      is: "hola-codigofacilito"
+      is: "hola-codigofacilito",
+      properties: {
+        name: {
+          type: String,
+          value: "default"
+        },
+        edad: {
+          type: Number
+        }
+      }
     });
+    console.log(Polymer);
   </script>
 </dom-module>
