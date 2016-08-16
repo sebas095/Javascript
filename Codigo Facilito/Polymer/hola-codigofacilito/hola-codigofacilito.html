@@ -1,16 +1,19 @@
 <!-- HTML Imports -->
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input.html">
 
 <dom-module id="hola-codigofacilito">
   <template>
     <style>
     /* Host -> hace referencia a todo el componente que estamos modificando */
       :host {
-        background-color: red;
         display: block;
       }
     </style>
     <!-- HTML Templates -->
+    <!-- {{}} data binding en dos sentidos -->
+    <paper-input label="Nombre" value="{{name}}"></paper-input>
+
+    <!-- [[]] data binding en un solo sentido -->
     <h1 id="titulo">Hola [[name]], tienes [[edad]]</h1>
 
   </template>
@@ -29,21 +32,24 @@
       },
       created: function() {
         // Propiedades del elemento
-        console.log("El elemento se creo");
-        console.log(this);
-        console.log(this.$);
+        // console.log("El elemento se creo");
+        // console.log(this);
+        // console.log(this.$);
       },
       ready: function() {
         // this.$ es para acceder al local DOM
-        console.log("El elemento esta listo");
-        console.log(this);
-        console.log(this.$);
-        console.log(this.$.titulo);
+        // console.log("El elemento esta listo");
+        // console.log(this);
+        // console.log(this.$);
+        // console.log(this.$.titulo);
+        setTimeout(() => {
+          this.name = "Uno nuevo";
+        }, 3000);
       },
       attached: function() {
         // Trabajar con estilo ya procesados y eventos del Documento y no del componente
         // Siempre se ejecuta despues de ready y mas de una vez a diferencia de ready
-        console.log("El elemento esta ya en el documento");
+        // console.log("El elemento esta ya en el documento");
       },
       detached: function() {
         // Se saca del DOM
