@@ -1,5 +1,6 @@
 <!-- HTML Imports -->
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="./nombre-codigofacilito.html">
 
 <dom-module id="hola-codigofacilito">
   <template>
@@ -14,7 +15,7 @@
     <paper-input label="Nombre" value="{{name}}"></paper-input>
 
     <!-- [[]] data binding en un solo sentido -->
-    <h1 id="titulo">Hola [[name]], tienes [[edad]]</h1>
+    <h1 id="titulo">Hola <nombre-codigofacilito name="{{name}}"></nombre-codigofacilito> , tienes [[edad]]</h1>
 
   </template>
 
@@ -42,9 +43,6 @@
         // console.log(this);
         // console.log(this.$);
         // console.log(this.$.titulo);
-        setTimeout(() => {
-          this.name = "Uno nuevo";
-        }, 3000);
       },
       attached: function() {
         // Trabajar con estilo ya procesados y eventos del Documento y no del componente

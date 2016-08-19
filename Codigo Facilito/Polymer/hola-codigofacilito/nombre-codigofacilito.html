@@ -1,0 +1,24 @@
+<dom-module id="nombre-codigofacilito">
+  <template>
+    <span>Mi nombre es {{name}}</span>
+  </template>
+  <script>
+    Polymer({
+      is: "nombre-codigofacilito",
+      properties: {
+        name: {
+          type: String,
+          value: "default",
+          // se pone true para sincronizar el hijo con el host
+          notify: true
+        }
+      },
+      ready: function() {
+        setTimeout(() => {
+          this.name = "Uno nuevo";
+          console.log(this.name);
+        }, 3000);
+      }
+    });
+  </script>
+</dom-module>
