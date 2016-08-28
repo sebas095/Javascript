@@ -1,5 +1,5 @@
 <!-- HTML Imports -->
-<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="./nombre-codigofacilito.html">
 
 <dom-module id="hola-codigofacilito">
@@ -9,13 +9,18 @@
       :host {
         display: block;
       }
+      paper-button {
+        background-color: var(--paper-red-500);
+        color: white;
+      }
     </style>
     <!-- HTML Templates -->
     <!-- {{}} data binding en dos sentidos -->
-    <paper-input label="Nombre" value="{{name}}"></paper-input>
+    <!-- Eventos: on-click="funcion"  -->
+    <paper-button raised id="button">Click</paper-button>
 
     <!-- [[]] data binding en un solo sentido -->
-    <h1 id="titulo">Hola <nombre-codigofacilito name="{{name}}"></nombre-codigofacilito> , tienes [[edad]]</h1>
+    <h1 id="titulo">Hola <nombre-codigofacilito name="{{name}}"></nombre-codigofacilito>, tienes [[edad]]</h1>
 
   </template>
 
@@ -31,6 +36,10 @@
           type: Number
         }
       },
+      listeners: {
+        "nameChanged": "clicked",
+        "click": "clicked"
+      },
       created: function() {
         // Propiedades del elemento
         // console.log("El elemento se creo");
@@ -43,6 +52,11 @@
         // console.log(this);
         // console.log(this.$);
         // console.log(this.$.titulo);
+        // this.$.button
+        //     .addEventListener("click", () => this.clicked());
+        //
+        // this.$$("nombre-codigofacilito")
+        //     .addEventListener("nameChanged", () => this.clicked());
       },
       attached: function() {
         // Trabajar con estilo ya procesados y eventos del Documento y no del componente
@@ -54,6 +68,11 @@
       },
       attributeChanged: function() {
         // Ocurre cuando algun atributo del componente que no este en properties haya cambiado
+      },
+      clicked: function(e) {
+        console.log(e.target);
+        console.log("Ejecutaron click");
+        this.name = "Hubo click";
       }
     });
   </script>

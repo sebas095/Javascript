@@ -15,8 +15,7 @@
       },
       ready: function() {
         setTimeout(() => {
-          this.name = "Uno nuevo";
-          console.log(this.name);
+          this.fire("nameChanged");
         }, 3000);
       }
     });
