@@ -50,7 +50,7 @@
       </div>
       <form is="iron-form" id="form">
         <div class="card-content">
-          <paper-input label="Email" type="email" required></paper-input>
+          <paper-input label="Email" value={{email}} type="email" required></paper-input>
           <paper-input label="Contraseña" type="password" required></paper-input>
         </div>
         <div class="card-actions">
@@ -64,13 +64,22 @@
   <script>
     Polymer({
       is: 'form-app',
+      properties: {
+        email: {
+          type: String,
+          observer: "_emailChanged"
+        }
+      },
       ready: function () {
         // acceso al Local DOm por elementos con id explicitamente ==> this.$["id"] o this.$.id
         // acceso al Local DOM para los demas ==> this.$$(selector)
-
-        this.$.login.addEventListener("click", () => {
-          this.$.form.submit();
-        });
+        //
+        // this.$.login.addEventListener("click", () => {
+        //   this.$.form.submit();
+        // });
+      },
+      _emailChanged: function(newState, oldState) {
+        console.log("OLD: ", oldState, " NEW: ", newState);
       }
     });
   </script>
