@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="./hidden-behavior.html">
 
 <dom-module id="form-app">
   <template>
@@ -80,7 +81,8 @@
       },
       _emailChanged: function(newState, oldState) {
         console.log("OLD: ", oldState, " NEW: ", newState);
-      }
+      },
+      behaviors: [FormApp.Hidding]
     });
   </script>
 </dom-module>
