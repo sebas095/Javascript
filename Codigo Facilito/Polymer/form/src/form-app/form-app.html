@@ -38,6 +38,11 @@
         color: white;
       }
     </style>
+
+    <!-- Elementos del light DOM -->
+    <!-- Punto de insercion entre el local DOm y el Light DOM -->
+    <content></content>
+
     <paper-card image="" elevation="3" animated-shadow="false">
       <div class="card-header">
         <iron-icon icon="account-circle"></iron-icon>
@@ -60,6 +65,9 @@
     Polymer({
       is: 'form-app',
       ready: function () {
+        // acceso al Local DOm por elementos con id explicitamente ==> this.$["id"] o this.$.id
+        // acceso al Local DOM para los demas ==> this.$$(selector)
+
         this.$.login.addEventListener("click", () => {
           this.$.form.submit();
         });
