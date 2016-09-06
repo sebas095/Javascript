@@ -5,6 +5,7 @@
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/iron-form/iron-form.html">
 <link rel="import" href="./hidden-behavior.html">
+<link rel="import" href="./form-button.html">
 
 <dom-module id="form-app">
   <template>
@@ -12,6 +13,12 @@
       :host {
         display: block;
         text-align: center;
+        --form-button-theme: {
+          background-color: red;
+          color: white;
+          border: none;
+          border-radius: 5px;
+        };
       }
       paper-card {
         text-align: left;
@@ -55,8 +62,9 @@
           <paper-input label="Contraseña" type="password" required></paper-input>
         </div>
         <div class="card-actions">
-          <paper-button raised id="login">Enviar</paper-button>
-          <paper-button>Cancelar</paper-button>
+          <!-- <paper-button raised id="login">Enviar</paper-button>
+          <paper-button>Cancelar</paper-button> -->
+          <form-button></form-button>
         </div>
       </form>
     </paper-card>

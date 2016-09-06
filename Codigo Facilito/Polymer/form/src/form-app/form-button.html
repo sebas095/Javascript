@@ -2,6 +2,14 @@
 <link rel="import" href="./hidden-behavior.html">
 
 <dom-module id="form-button">
+  <style>
+    button {
+      /* var(nombre de la variable, default value)
+      background-color: var(--form-button-background, red);*/
+      /* MIXINS */
+      @apply(--form-button-theme);
+    }
+  </style>
   <template>
     <button>Hola</button>
   </template>
