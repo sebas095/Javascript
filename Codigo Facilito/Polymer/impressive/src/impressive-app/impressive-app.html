@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../impressive-elements/impressive-form.html">
+<link rel="import" href="../impressive-elements/impressive-collection.html">
 
 <dom-module id="impressive-app">
   <template>
@@ -15,7 +16,7 @@
     </style>
 
     <div class="layout horizontal">
-      <impressive-collection class="iron-flex"></impressive-collection>
+      <impressive-collection class="iron-flex" collection="{{collection}}"></impressive-collection>
       <impressive-form class="iron-flex" collection="{{collection}}"></impressive-class>
     </div>
   </template>
