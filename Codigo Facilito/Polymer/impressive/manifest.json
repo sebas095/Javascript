@@ -1,0 +1,6 @@
+{
+  "name": "impressive",
+  "short_name": "impressive",
+  "start_url": "/",
+  "display": "standalone"
+}

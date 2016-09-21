@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+
+<dom-module id="impressive-app">
+  <template>
+    <style include="iron-flex iron-flex-alignment">
+      :host {
+        display: block;
+      }
+      .iron-flex {
+        width: 50%;
+        height: 100px;
+        background-color: #EEE;
+        margin-right: 1em;
+      }
+    </style>
+
+    <div class="layout horizontal">
+      <impressive-collection class="iron-flex"></impressive-collection>
+      <impressive-form class="iron-flex"></impressive-class>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'impressive-app',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'impressive-app',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
