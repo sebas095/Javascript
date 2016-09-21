@@ -1,0 +1,31 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../../bower_components/paper-styles/default-theme.html">
+
+<dom-module id="impressive-form">
+  <style>
+    paper-button {
+      background-color: var(--accent-color);
+      color: white;
+      margin-left: 0px;
+      margin-top: 1em;
+    }
+  </style>
+  <template>
+    <form is="iron-form">
+      <paper-input label="Pequeña descripción..." id="description"></paper-input>
+      <paper-textarea label="Copia el código aquí..." rows="5" id="code"></paper-textarea>
+      <paper-input label="Lenguaje..." id="language"></paper-input>
+      <paper-button raised on-tap="addSnippet">Guardar snippet de código</paper-button>
+    </form>
+  </template>
+  <script>
+    Polymer({
+      is: "impressive-form",
+
+    });
+  </script>
+</dom-module>
