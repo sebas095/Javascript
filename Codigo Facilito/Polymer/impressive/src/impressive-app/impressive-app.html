@@ -16,21 +16,27 @@
 
     <div class="layout horizontal">
       <impressive-collection class="iron-flex"></impressive-collection>
-      <impressive-form class="iron-flex"></impressive-class>
+      <impressive-form class="iron-flex" collection="{{collection}}"></impressive-class>
     </div>
   </template>
 
   <script>
     Polymer({
-
       is: 'impressive-app',
-
       properties: {
-        prop1: {
-          type: String,
-          value: 'impressive-app',
-        },
+        collection: {
+          type: Array,
+          value: () => []
+        }
       },
+
+      observers: [
+        "_collectionChanged(collection.*)"
+      ],
+
+      _collectionChanged: function() {
+        console.log(this.collection);
+      }
 
     });
   </script>

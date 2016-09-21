@@ -17,7 +17,7 @@
   <template>
     <form is="iron-form">
       <paper-input label="Pequeña descripción..." id="description"></paper-input>
-      <paper-textarea label="Copia el código aquí..." rows="5" id="code"></paper-textarea>
+      <paper-textarea label="Copia el código aquí..." rows="5" id="textarea"></paper-textarea>
       <paper-input label="Lenguaje..." id="language"></paper-input>
       <paper-button raised on-tap="addSnippet">Guardar snippet de código</paper-button>
     </form>
@@ -25,7 +25,22 @@
   <script>
     Polymer({
       is: "impressive-form",
+      properties: {
+        collection: {
+          type: Array,
+          notify: true
+        }
+      },
+      addSnippet: function () {
+        let codeObject = {
+          description: this.$.description.value,
+          code: this.$.textarea.value,
+          language: this.$.language.value
+        };
 
+        this.push("collection", codeObject);
+        // console.log(this.collection);
+      }
     });
   </script>
 </dom-module>
