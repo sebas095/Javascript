@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="stylesheet" href="../../prism.css">
+
+<dom-module id="impressive-code">
+  <template>
+    <pre id="output"></pre>
+  </template>
+  <script src="../../prism.js"></script>
+  <script>
+    Polymer({
+      is: "impressive-code",
+      properties: {
+        code: String,
+        lang: String
+      },
+      attached: function() {
+        this._render();
+      },
+      _render: function() {
+        this.$.output.innerHTML = this._highlight();
+      },
+      _highlight: function() {
+        return Prism.highlight(this.code, Prism.languages[this.lang]);
+      }
+    });
+  </script>
+</dom-module>
