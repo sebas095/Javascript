@@ -4,7 +4,32 @@ require('core-js/fn/object/assign');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const config = require('./webpack.config');
-const open = require('open');
+
+const express = require('express');
+const http = require('http');
+const engine = require('socket.io');
+const request = require('request');
+
+const port = 3000;
+const app = express();
+
+const server = http.createServer(app).listen(port, () => {
+  console.log('Port listening on ' + port);
+});
+
+const io = engine.listen(server);
+
+io.on('connection', (socket) => {
+  request('https://randomuser.me/api/', (err, response, body) => {
+    io.emit('people', body);
+  });
+
+  socket.on('ask', () => {
+    request('https://randomuser.me/api/', (err, response, body) => {
+      socket.emit('people', body);
+    });
+  });
+});
 
 /**
  * Flag indicating whether webpack compiled for the first time.

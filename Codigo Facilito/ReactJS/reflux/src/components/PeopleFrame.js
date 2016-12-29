@@ -10,8 +10,8 @@ export default class PeopleFrame extends React.Component {
   render() {
     return (
       <div>
-        <PeoplePhoto />
-        <PeopleTitle />
+        <PeoplePhoto photo={this.props.people.picture.large}/>
+        <PeopleTitle name={this.props.people.name}/>
       </div>
     );
   }

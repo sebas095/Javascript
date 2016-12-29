@@ -8,7 +8,7 @@ export default class PeoplePhoto extends React.Component {
   render() {
     return (
       <div>
-        <img src="#" alt="people photo"/>
+        <img src={this.props.photo} alt="people photo"/>
       </div>
     );
   }
