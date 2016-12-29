@@ -7,7 +7,7 @@ export default class CommentList extends React.Component {
 
   render() {
     return (
-      <form class="commentForm">
+      <form class="commentForm" onSubmit={this.props.onSubmit}>
         <input type="text" name="author" placeholder="Su nombre"/>
         <input type="text" name="text" placeholder="Firma! :D"/>
         <input type="hidden" name="id" value={Date.now()}/>
